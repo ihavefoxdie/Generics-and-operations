@@ -8,7 +8,6 @@ namespace Generic_methods.Interfaces
 {
     public interface IAdd<T>
     {
-        T DefVal { get; }
         T Add(T a, T b);
     }
 }
