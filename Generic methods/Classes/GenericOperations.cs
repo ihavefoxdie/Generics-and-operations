@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,42 @@ namespace Generic_methods.Classes
         {
             C calc = new();
             return calc.Add(a, b);
+        }
+
+        public static T MValue<T, C>(params T[] values) where C: IComparer<T>, new()
+        {
+            T max = values[0];
+            C comp = new();
+            for(int i = 1; i < values.Length; i++)
+            {
+                if (comp.Compare(max, values[i]) == 1)
+                    continue;
+                else
+                    max = values[i];
+            }
+
+            return max;
+        }
+        
+        public class IntComp : IComparer<int>
+        {
+            public int Compare(int a, int b)
+            {
+                return a < b ? -1 : 1;
+            }
+        }
+
+        public class DoubleComp : IComparer<double>
+        {
+            /*double Compare(double a, double b)
+            {
+                return a < b ? b : a;
+            }*/
+
+            int IComparer<double>.Compare(double a, double b)
+            {
+                return Comparer<double>.Default.Compare(a, b);
+            }
         }
 
         public class IntAdd : IAdd<int>

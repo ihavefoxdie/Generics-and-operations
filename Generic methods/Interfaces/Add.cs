@@ -10,4 +10,8 @@ namespace Generic_methods.Interfaces
     {
         T Add(T a, T b);
     }
+    /*public interface IComparison<T>
+    {
+        T Compare(T a, T b);
+    }*/
 }
