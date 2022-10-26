@@ -31,7 +31,7 @@ namespace Generic_methods.Classes
             C comp = new();
             for(int i = 1; i < values.Length; i++)
             {
-                if (comp.Compare(max, values[i]) == 1)
+                if (comp.Compare(max, values[i]) >= 0)
                     continue;
                 else
                     max = values[i];
